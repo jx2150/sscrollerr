@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Sscrollerr Example</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	img {
+		position: fixed;
+		bottom: 1em;
+		left: 2em;
+		min-width: 300px;
+	}
+</style>
+</head>
+
+<body>
+<img src="http://bacolicious.s3.amazonaws.com/bacon.png" />
+<section id="start" class="section">
+	<h1>Scroll down the page</h1>
+	<p>
+		Pig salami shank, chuck bresaola pancetta venison tongue prosciutto short loin beef ribs pork belly. Pork belly ham hock pork loin ground round. Tenderloin boudin pancetta venison pork belly beef. Tri-tip shank cow tongue salami hamburger ribeye shoulder sausage. Shoulder rump meatball swine. Tenderloin corned beef strip steak tongue, flank short ribs bresaola sirloin frankfurter. Pork belly andouille rump leberkas.
+	</p>
+</section>
+<section id="section2" class="section">
+	<h2>Section 2</h2>
+	<p>
+		Bacon ipsum dolor sit amet t-bone salami chicken turkey fatback chuck andouille shank. Chicken prosciutto ground round flank andouille fatback shoulder hamburger shankle. Chuck ham ribeye leberkas, short loin short ribs turkey biltong cow capicola tail. Pastrami ham hock prosciutto biltong strip steak cow spare ribs tail. Venison beef ribs tongue rump ham hock tri-tip pancetta shankle frankfurter shoulder.
+	</p>
+</section>
+<section id="section3" class="section">
+	<h2>Section 3</h2>
+	<p>
+		Andouille prosciutto corned beef capicola spare ribs, venison doner meatloaf bacon tongue shankle ground round kielbasa. Meatball ribeye hamburger, kielbasa leberkas venison pork belly sirloin pastrami. Short ribs pork belly tongue, capicola biltong pork loin kielbasa meatloaf pastrami meatball shoulder turducken strip steak drumstick. Sausage venison brisket tail short ribs. Bacon meatloaf ham hock fatback, flank chicken pig drumstick short loin tenderloin.
+	</p>
+</section>
+
+<script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+<script type="text/javascript" src="js/plugins.js"></script>\
+<script type="text/javascript" src="js/sscrollerr.js"></script>
+<script>
+
+SScrollerr.init({
+	'sectionSelector': '.section'
+});
+
+SScrollerr.addScrollCallback(function(){
+	if (SScrollerr.scrollDirection == "down") {
+		console.log('down scroll');
+	} else if(SScrollerr.scrollDirection == "up") {
+		console.log('up scroll');
+	}
+});
+
+SScrollerr.SectionActions = {
+	'start': {
+		'setup': function() { console.log('start setup'); },
+		'teardown': function() { console.log('start teardown'); }
+	},
+	'section2': {
+		'setup': function() {
+			$('img:first').css({
+				'-webkit-transform': 'rotate(-35deg)',
+				'-moz-transform': 'rotate(-35deg)',
+				'-o-transform': 'rotate(-35deg)',
+				'transform': 'rotate(-35deg)'
+			});
+		},
+		'teardown': function() {
+			$('img:first').css({
+				'-webkit-transform': 'rotate(0deg)',
+				'-moz-transform': 'rotate(0deg)',
+				'-o-transform': 'rotate(0deg)',
+				'transform': 'rotate(0deg)'
+			});
+		}
+		
+	},
+	'section3': {
+		'setup': function() { console.log('section3 setup'); },
+		'teardown': function() { console.log('section3 teardown'); }
+	}
+}
+</script>
+
+</body>
+</html>
